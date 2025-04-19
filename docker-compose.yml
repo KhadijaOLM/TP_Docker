@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+
+  products:
+    build: ./Products/api-products
+    container_name: produit-service
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./Products/api-products:/app
+      - /app/node_modules
+    env_file:
+      - "./Products/api-products/.env"
+    restart: always
+
+  orders:
+    build: ./Orders/api-orders
+    container_name: commande-service
+    ports:
+      - "3001:3001"
+    volumes:
+      - ./Orders/api-orders:/app
+      - /app/node_modules
+    env_file:
+      - "./Orders/api-orders/.env"
+    restart: always
+
